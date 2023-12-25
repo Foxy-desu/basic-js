@@ -11,9 +11,66 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-function sortByHeight(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+// function sortByHeight(arr) {
+//   let separatorIndexArr=[];
+//   arr.forEach((element, index) => {
+//     if(element === -1) {
+//       separatorIndexArr.push(index);
+//     }
+//   })
+//   let arrCopy = [...arr];
+//   let newArr = [];
+//   let separator = -1;
+
+//   for(let i = 0; i <= arrCopy.length-1; i++){
+//     arrCopy[i].forEach((elem)=>{
+//     if(elem !== -1){newArr.push(elem)}
+//   })}
+
+
+  
+//   // while(arrCopy.length){
+//   //   for(let i = 0; i <= separatorIndexArr.length-1; i++){
+//   //     newArr.push(arrCopy.splice(separatorIndexArr[i], separatorIndexArr[i+1]-separatorIndexArr[i]))
+//   //   }
+
+//   // }
+
+//   // let cleanArr = (newArr.filter((elem)=> elem.length !== 0));
+
+//   // for(let i = 0; i <= cleanArr.length -1; i++){
+//   //   cleanArr[i].sort((a,b)=> a-b);
+//   // }
+  
+
+//  console,log (cleanArr);
+  
+// }
+
+function sortByHeight(arr) {
+  let separatorIndexArr=[];
+  arr.forEach((element, index) => {
+    if(element === -1) {
+      separatorIndexArr.push(index);
+    }
+  })
+  let arrCopy = [...arr];
+  let newArr = [];
+  let separator = -1;
+
+  arrCopy.forEach(elem=> {
+    if(elem !== separator) {
+    newArr.push(elem)}
+  })
+
+  newArr.sort((a,b)=> a-b);
+
+  for(let i = 0; i <= separatorIndexArr.length-1; i++){
+    newArr.splice(separatorIndexArr[i], 0, separator)
+  }
+
+ return (newArr);
+  
 }
 
 module.exports = {
